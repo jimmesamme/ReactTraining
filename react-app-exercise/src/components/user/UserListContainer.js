@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import UserList from './UserList'
+import { withRouter } from 'react-router-dom'
 
 class UserListContainer extends Component {
   constructor() {
@@ -7,6 +8,7 @@ class UserListContainer extends Component {
     this.state = {
       users: []
     }
+    this.showUserProfile = this.showUserProfile.bind(this);
   }
 
   componentDidMount() {
@@ -21,14 +23,19 @@ class UserListContainer extends Component {
     })
   }
 
+  showUserProfile(user) {
+    this.props.history.push(`/users/${user.username}`)
+  }
+
   render() {
     return (
       <UserList
         users = {this.state.users}
         match = {this.props.match}
+        showUserProfile = {this.showUserProfile}
       />
     )
   }
 }
 
-export default UserListContainer
+export default withRouter(UserListContainer)

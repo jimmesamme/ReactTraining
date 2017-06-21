@@ -9,6 +9,7 @@ import View from '../layout/View'
 
 class UserProfile extends Component {
   constructor() {
+
     super()
     this.state = { username: null }
   }

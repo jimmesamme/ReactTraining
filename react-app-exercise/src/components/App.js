@@ -6,11 +6,12 @@ import { spacing, typography } from 'material-ui/styles'
 import withWidth, { LARGE } from 'material-ui/utils/withWidth'
 import { Route, Switch } from 'react-router-dom'
 
-import UserProfile from './user/UserListContainer'
+import UserListContainer from './user/UserListContainer'
 import WorkshopList from './workshop/WorkshopList'
 import Dashboard from './dashboard'
 import NotFound from './NotFound'
 import Login from './Login'
+import UserProfile from './user/UserProfile'
 
 class App extends Component {
   constructor() {
@@ -79,7 +80,7 @@ class App extends Component {
         <div className="view-container" style={styles.app}>
           <Switch>
             <Route exact path="/" component={Dashboard} />
-            <Route path="/users" component={UserProfile} />
+            <Route path="/users" component={UserListContainer} />
             <Route path="/login" component={Login} />
             <Route path="/workshops" component={WorkshopList} />
             <Route component={NotFound} />

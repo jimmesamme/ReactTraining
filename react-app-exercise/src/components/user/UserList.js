@@ -11,35 +11,21 @@ import { withRouter } from 'react-router-dom'
 import View from '../layout/View'
 import UserProfile from './UserProfile'
 
-class UserList extends Component {
+const UserList = (props) => (
+  <View style={{ display: 'flex' }}>
+    <View>
+      { props.users.map(user => (
+        <ListItem
+          onClick={props.showUserProfile.bind(this, user)} key={user.username} style={{color: "black"}}
+          primaryText={ `${user.name.first} ${user.name.last}`}
+          leftIcon={<ActionGrade color={pinkA200} />}
+          rightAvatar={<Avatar src={`images/${user.username}_sm.jpg`} />}
+        />
+      ))}
+    </View>
+    <Route path={`${props.match.url}/:username`} component={UserProfile} />
+  </View>
+)
 
-  showUserProfile(user) {
-    this.props.history.push(`/users/${user.username}`)
-  }
 
-  render() {
-    const { match, width, users } = this.props
-    
-    return (
-      <View style={{ display: 'flex' }}>
-        <View>
-          { users.map(user => (
-            <ListItem
-              onClick={this.showUserProfile.bind(this, user)} key={user.username} style={{color: "black"}}
-              primaryText={ `${user.name.first} ${user.name.last}`}
-              leftIcon={<ActionGrade color={pinkA200} />}
-              rightAvatar={<Avatar src={`images/${user.username}_sm.jpg`} />}
-            />
-          ))}
-        </View>
-        <Route path={`${match.url}/:username`} component={UserProfile} />
-      </View>
-    )
-  }
-}
-
-export default withRouter(withWidth()(UserList))
-
-UserList.contextTypes = {
-  router: PropTypes.object.isRequired
-}
+export default withWidth()(UserList)
