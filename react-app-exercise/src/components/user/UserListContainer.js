@@ -4,16 +4,29 @@ import UserList from './UserList'
 class UserListContainer extends Component {
   constructor() {
     super()
-    //add some code here
+    this.state = {
+      users: []
+    }
   }
 
   componentDidMount() {
-    //add the data fetching here
+    fetch('/data/users.js', {
+        method: 'get'
+    }).then((response) => {
+        return response.json()
+    }).then((data) => {
+        this.setState({ users: data })
+    }).catch((err)=> {
+        console.log(err)
+    })
   }
 
   render() {
     return (
-      //you need to render the UserList component and pass the users
+      <UserList
+        users = {this.state.users}
+        match = {this.props.match}
+      />
     )
   }
 }
