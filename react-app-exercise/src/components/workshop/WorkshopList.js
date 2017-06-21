@@ -15,9 +15,11 @@ const WorkshopList = (props) => (
     <View>
       { props.workshops.map(workshop => (
         <ListItem
+          key={workshop.id} 
           style={{color: "black"}}
           primaryText={ `${workshop.title}`}
-          leftIcon={<ActionGrade color={pinkA200} />}
+          leftIcon={<ActionGrade color={pinkA200}
+          />}
         />
       ))}
     </View>
