@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TopNav = () => (<nav className="navbar navbar-default navbar-fixed-top navbar-custom">
+const TopNav = (props) => (<nav className="navbar navbar-default navbar-fixed-top navbar-custom">
     <div className="container">
         <div className="navbar-header">
             <a className="navbar-brand">LeanJS</a>
@@ -10,7 +10,7 @@ const TopNav = () => (<nav className="navbar navbar-default navbar-fixed-top nav
                 <a href="#about">About us</a>
             </li>
             <li>
-              <button onClick={ this.toggleMenu } className="btn btn-lg btn-outline">
+              <button onClick={ props.toggleMenu } className="btn btn-lg btn-outline">
                 <i className="fa fa-graduation-cap"></i> <span>Training</span>
               </button>
             </li>

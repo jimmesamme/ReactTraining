@@ -37,7 +37,7 @@ class App extends React.Component {
           toggleMenu={ this.toggleMenu }
         />
 
-        <TopNav />
+        <TopNav toggleMenu={this.toggleMenu} />
 
         <Header title="Library" />
 
