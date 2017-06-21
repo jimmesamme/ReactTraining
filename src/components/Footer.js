@@ -1,5 +1,7 @@
 import React from 'react'
 
+import SocialIcon from './SocialIcon'
+
 const Footer = () => (<footer className="text-center">
     <div className="footer-above">
         <div className="container">
@@ -15,15 +17,18 @@ const Footer = () => (<footer className="text-center">
                 <div className="footer-col col-md-4">
                     <h3>Around the Web</h3>
                     <ul className="list-inline">
-                        <li>
-                            <a target="_blank" rel="noopener noreferrer" href="https://github.com/leanjscom" className="btn-social btn-outline"><i className="fa fa-fw fa-github"></i></a>
-                        </li>
-                        <li>
-                            <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/leanjscom" className="btn-social btn-outline"><i className="fa fa-fw fa-twitter"></i></a>
-                        </li>
-                        <li>
-                            <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/leanjscom/" className="btn-social btn-outline"><i className="fa fa-fw fa-instagram"></i></a>
-                        </li>
+                        <SocialIcon
+                            link="https://github.com/leanjscom"
+                            type="github"
+                        />
+                        <SocialIcon
+                            link="https://twitter.com/leanjscom"
+                            type="twitter"
+                        />
+                        <SocialIcon
+                            link="https://www.instagram.com/leanjscom/"
+                            type="instagram"
+                        />
                     </ul>
                 </div>
                 <div className="footer-col col-md-4">
