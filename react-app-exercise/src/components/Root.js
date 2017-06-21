@@ -5,7 +5,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme'
 
 import { Route, Switch } from 'react-router-dom'
 
-import Login from './Login'
+import LoginContainer from './LoginContainer'
 
 import App from './App'
 import theme from '../config/Theme'
@@ -16,7 +16,7 @@ const Root = () => (
   <Router>
     <MuiThemeProvider muiTheme={muiTheme}>
     	<Switch>
-    		<Route path="/login" component={Login} />
+    		<Route path="/login" component={LoginContainer} />
     		<Route component={App} />
     	</Switch>
     </MuiThemeProvider>
