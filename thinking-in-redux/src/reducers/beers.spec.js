@@ -3,7 +3,7 @@ import beersReducer from './beers'
 
 describe("The beers reducer in src/reducers/beers.js", () => {
   it("should return the default state by default if it doesn't match any action", () => {
-    const state = beersReducer([5], {type: 'test'})
+    const state = beersReducer([5], {type: 'CERVEZA'})
 
     expect(state).to.be.deep.equal([5])
   })

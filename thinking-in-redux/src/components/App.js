@@ -7,16 +7,17 @@ import Checkout from "./cart/Checkout"
 import Header from "./Header"
 import theme from "./theme"
 
+import * as actions from '../actions'
+import { connect } from 'react-redux'
+
 class App extends React.Component {
   constructor() {
     super()
-    this.state = {
-      isSideMenuOpen: false
-    }
+    this.toggleSideMenu = this.toggleSideMenu.bind(this)
   }
 
   toggleSideMenu = () => {
-    this.setState({ isSideMenuOpen: !this.state.isSideMenuOpen })
+    this.props.dispatch(actions.toggleSideMenu())
   }
 
   render() {
@@ -26,7 +27,7 @@ class App extends React.Component {
           noOverlay
           customCrossIcon={false}
           customBurgerIcon={ false }
-          isOpen={this.state.isSideMenuOpen}
+          isOpen={this.props.isSideMenuOpen}
           pageWrapId={'page-wrap'}
           styles={theme.sideMenu}
         >
@@ -46,4 +47,15 @@ class App extends React.Component {
   }
 }
 
-export default App
+const mapStateToProps = state => ({
+  isSideMenuOpen: state.sideMenu.isOpen
+})
+
+const mapDispatchToProps = dispatch => ({
+  dispatch
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App)
