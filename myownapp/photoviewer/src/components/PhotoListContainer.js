@@ -1,18 +1,21 @@
 import React, {Component} from 'react'
 import {fetchPhotos} from '../api/Photos.js'	
+import { connect } from 'react-redux'
 import PhotoList from './PhotoList.js'
+
+import * as actions from '../actions'
+
 
 class PhotoListContainer extends Component {
 	constructor() {
 		super();
-		this.state = {
-			photos: []
-		};
 		this.showPhoto = this.showPhoto.bind(this);
 	}
 
 	componentDidMount() {
-		fetchPhotos().then((data) => this.setState({photos:data}));
+		fetchPhotos().then(photos => {
+			this.props.dispatch(actions.receivePhotos(photos))
+		})		
 	}
 
 	showPhoto(photoId) {
@@ -20,13 +23,25 @@ class PhotoListContainer extends Component {
 	}
 
 	render() {
+
 		return (
 			<PhotoList 
-				photos={this.state.photos} 
+				photos={this.props.photos} 
 				showPhoto={this.showPhoto}
 			/>
 		);
 	}
 }
 
-export default PhotoListContainer
+const mapStateToProps = state => ({
+  photos: state.photos
+})
+
+const mapDispatchToProps = dispatch => ({
+  dispatch
+})
+
+export default connect(
+	mapStateToProps,
+  mapDispatchToProps
+)(PhotoListContainer)

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+
 import './App.css';
 import { Route, Switch } from 'react-router-dom'
 
@@ -12,6 +12,7 @@ class App extends Component {
       <div className="main-view">
         <Switch>
           <Route exact path="/photos" component={PhotoListContainer} />
+          <Route exact path="/" component={PhotoListContainer} />
           <Route path="/photos/:id" component={PhotoViewContainer} />
         </Switch>
       </div>

@@ -1,9 +1,9 @@
-import React, {Component} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 const PhotoItem = (props) => (
 	<p>
-		<img src={props.size === "thumbnail" ? props.photo.thumbnailUrl : props.photo.url} />
+		<img alt="" src={props.size === "thumbnail" ? props.photo.thumbnailUrl : props.photo.url} />
 		<span>{props.photo.id}  | {props.photo.title}</span>
 	</p>
 )
